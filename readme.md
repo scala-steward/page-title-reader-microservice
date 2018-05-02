@@ -25,7 +25,7 @@ It works well against cases like these:
 ]
 ```
 
-... which result to:
+... which result in:
 
 ```json
 [
@@ -67,8 +67,9 @@ It works well against cases like these:
   }
 ]
 ```
+
 ## How to use it
 
-1. Install **sbt** (and **postman** to test manually)
-1. In project directory execute `sbt run`
-1. Make a POST request at `http://localhost:8080/` and see the results
+1.  Install **[sbt](https://www.scala-sbt.org/)** (and **[Postman](https://www.getpostman.com/)** to compose requests manually)
+1.  In project directory execute `sbt run`
+1.  Send a **POST** request to `http://localhost:8080/`
