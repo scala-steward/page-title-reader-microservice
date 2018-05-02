@@ -5,9 +5,9 @@ Give urls, get page titles
 ## What crawler does
 
 1.  It gets page title for each of given url's in a list.
-1.  If URL is presented several times, it will be fetched once, but result will be printed several times, in the same order as a source list.
-1.  It does not follow redirects immediately. Instead, it responds with new location, so you can handle redirection before getting a final result.
-1.  It handles non-urls, empty strings, inaccessible hosts and other http errors in a predictable manner
+1.  If URL is presented several times, it will be fetched once, but result will be printed several times, in the same order as in a source list.
+1.  It does not follow redirects immediately. Instead, it responds with a new location, so you can handle redirection before getting a final result.
+1.  It handles non-urls, empty strings, inaccessible hosts and http codes in a predictable manner
 
 It works well against cases like these:
 
