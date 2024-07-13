@@ -5,7 +5,7 @@ lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
       organization    := "com.example",
-      scalaVersion    := "2.12.5"
+      scalaVersion    := "2.12.19"
     )),
     name := "crawler",
     libraryDependencies ++= Seq(

@@ -1,8 +1,12 @@
-# Crawler.
+# page-title-reader-microservice
+
+Coding assessment (Scala 2, Akka HTTP).
+
+Completed in 2019, and currently maintained as a demonstration project.
+
+## What the microservice does
 
 Give urls, get page titles
-
-## What crawler does
 
 1.  It gets page title for each of given url's in a list.
 1.  If URL is presented several times, it will be fetched once, but result will be printed several times, in the same order as in a source list.
