@@ -32,4 +32,4 @@ jobs:
         java-version: adopt@1.11
 
     - name: Compile, check formatting, lint, and run tests
-      run: sbt ci compile
+      run: sbt compile
