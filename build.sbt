@@ -1,11 +1,12 @@
-lazy val akkaHttpVersion = "10.5.3"
-lazy val akkaVersion    = "2.7.0"
+lazy val akkaHttpVersion = "10.6.3"
+lazy val akkaVersion    = "2.9.3"
 
 lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
       scalaVersion    := "2.13.14"
     )),
+    resolvers += "Akka library repository".at("https://repo.akka.io/maven"),
     name := "page-title-reader-microservice",
     // scalacOptions ++= Seq("-unchecked", "-deprecation"),
     libraryDependencies ++= Seq(
