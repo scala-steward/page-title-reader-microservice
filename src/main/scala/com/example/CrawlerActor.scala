@@ -1,6 +1,7 @@
 package com.example
 
 import concurrent.Future
+import concurrent.ExecutionContextExecutor
 import util._
 
 import akka.actor.{ ActorSystem, Actor, ActorLogging, Props }
@@ -12,10 +13,10 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.model._
 
 import akka.stream.scaladsl.Source
-import akka.stream.{ ActorMaterializer, ActorMaterializerSettings }
+import akka.stream.Materializer
 
 object CrawlerActor {
-  def props: Props = Props[CrawlerActor]
+  def props: Props = Props[CrawlerActor]()
 
   final case class ProcessList(urlList: List[String])
 
@@ -24,10 +25,12 @@ object CrawlerActor {
     for (titleRegex(title) <- titleRegex.findFirstMatchIn(src)) yield title
   }
 
-  def prependScheme(raw: String): Uri = Uri(raw) match {
+  def prependScheme(raw: String): Uri = {
+    val defaultScheme = "http"
+    Uri(raw) match {
     case uri if uri.isAbsolute => uri
-    case uri if uri.isRelative => Uri(s"http://$uri")
-  }
+    case uri => Uri(s"${defaultScheme}://${uri}")
+  }}
 
   def serializeToMap(url: String, resOrError: Either[String, String]) = resOrError match {
     case Left(x) => Map("url" -> url, "error" -> x)
@@ -39,9 +42,8 @@ class CrawlerActor extends Actor with ActorLogging {
 
   import CrawlerActor._
 
-  implicit val system: ActorSystem = ActorSystem("crawlerServer")
-  implicit val executionContext = system.dispatcher
-  final implicit val materializer: ActorMaterializer = ActorMaterializer(ActorMaterializerSettings(context.system))
+  implicit val system: ActorSystem = ActorSystem()
+  implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
   def prepareRequest(url: String): Future[Either[String, HttpRequest]] =
     Future.fromTry(Try(Right(HttpRequest(uri = prependScheme(url)))))

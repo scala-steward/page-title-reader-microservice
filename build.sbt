@@ -7,6 +7,7 @@ lazy val root = (project in file(".")).
       scalaVersion    := "2.13.14"
     )),
     name := "page-title-reader-microservice",
+    // scalacOptions ++= Seq("-unchecked", "-deprecation"),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-http"            % akkaHttpVersion,
       "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion,

@@ -19,7 +19,7 @@ import com.example.CrawlerActor._
 trait CrawlerRoutes extends Directives with SprayJsonSupport with DefaultJsonProtocol {
   implicit def system: ActorSystem
 
-  implicit lazy val timeout = Timeout(60.seconds)
+  implicit lazy val timeout: Timeout = Timeout(60.seconds)
   lazy val log = Logging(system, classOf[CrawlerRoutes])
 
   def crawlerActor: ActorRef
@@ -38,9 +38,7 @@ trait CrawlerRoutes extends Directives with SprayJsonSupport with DefaultJsonPro
             (crawlerActor ? ProcessList(urlList))
               .mapTo[Future[List[Map[String, String]]]]
               .flatten
-          rejectEmptyResponse {
-            complete(res)
-          }
+          onSuccess(res)(xs => complete(xs))
         }
       }
   }
