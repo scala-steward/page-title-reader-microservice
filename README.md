@@ -15,60 +15,40 @@ Give urls, get page titles
 
 It works well against cases like these:
 
-```json
-[
-  "https://ya.ru",
-  "www.dictionary.com/browse/http",
-  "https://api.github.com/",
-  "http://ya.ru",
-  "shit://yandex.ru",
-  "https://github.com/ladsgfadg",
-  "adsfgasdfg",
-  "",
-  "https://ya.ru"
-]
+```sh
+curl -H 'Content-Type: application/json' \
+    -d '[
+          "https://ya.ru",
+          "www.dictionary.com/browse/http",
+          "https://api.github.com/",
+          "http://ya.ru",
+          "nonsense://yandex.ru",
+          "https://github.com/ladsgfadg",
+          "adsfgasdfg",
+          "",
+          "https://ya.ru"
+          ]' \
+    -X POST \
+    http://localhost:8080
+
 ```
 
 ... which result in:
 
 ```json
 [
-  {
-    "url": "https://ya.ru",
-    "title": "Яндекс"
-  },
+  { "url": "https://ya.ru", "title": "Яндекс — быстрый поиск в интернете" },
   {
     "url": "www.dictionary.com/browse/http",
-    "title": "Http | Define Http at Dictionary.com"
+    "error": "Redirect: https://www.dictionary.com/browse/http"
   },
-  {
-    "url": "https://api.github.com/",
-    "error": "Page has no title"
-  },
-  {
-    "url": "http://ya.ru",
-    "error": "Redirect: https://ya.ru/"
-  },
-  {
-    "url": "shit://yandex.ru",
-    "error": "Bad url"
-  },
-  {
-    "url": "https://github.com/ladsgfadg",
-    "error": "Status code: 404"
-  },
-  {
-    "url": "adsfgasdfg",
-    "error": "Inaccessible host"
-  },
-  {
-    "url": "",
-    "error": "Inaccessible host"
-  },
-  {
-    "url": "https://ya.ru",
-    "title": "Яндекс"
-  }
+  { "url": "https://api.github.com/", "error": "Page has no title" },
+  { "url": "http://ya.ru", "error": "Redirect: https://ya.ru/" },
+  { "url": "nonsense://yandex.ru", "error": "Bad url" },
+  { "url": "https://github.com/ladsgfadg", "error": "Status code: 404" },
+  { "url": "adsfgasdfg", "error": "Inaccessible host" },
+  { "url": "", "error": "Inaccessible host" },
+  { "url": "https://ya.ru", "title": "Яндекс — быстрый поиск в интернете" }
 ]
 ```
 
