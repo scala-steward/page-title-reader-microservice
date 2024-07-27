@@ -2,7 +2,7 @@
 
 Coding assessment (Scala 2, Akka HTTP).
 
-Completed in 2019, and currently maintained as a demonstration project.
+Completed in 2018, and currently maintained as a demonstration project.
 
 ## What the microservice does
 
