@@ -1,4 +1,4 @@
-package com.example
+package crawler
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.concurrent.Future

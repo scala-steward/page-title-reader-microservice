@@ -1,4 +1,4 @@
-package com.example
+package crawler
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration

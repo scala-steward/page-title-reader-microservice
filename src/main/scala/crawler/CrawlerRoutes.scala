@@ -1,4 +1,4 @@
-package com.example
+package crawler
 
 import scala.concurrent.Future
 import scala.concurrent.duration._
@@ -11,8 +11,9 @@ import akka.http.scaladsl.server.Directives
 import akka.http.scaladsl.server.Route
 import akka.pattern.ask
 import akka.util.Timeout
-import com.example.CrawlerActor._
 import spray.json.DefaultJsonProtocol
+
+import crawler.CrawlerActor._
 
 trait CrawlerRoutes extends Directives with SprayJsonSupport with DefaultJsonProtocol {
   implicit def system: ActorSystem
