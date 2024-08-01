@@ -4,6 +4,17 @@ Coding assessment (Scala 2, Akka HTTP).
 
 Completed in 2018, and currently maintained as a demonstration project.
 
+## Pre-requisites
+
+- [sbt](https://www.scala-sbt.org/)
+
+## Usage
+
+- `sbt run` - run
+- `sbt styleFix` - fix formatting and linting errors
+- `sbt styleCheck` - check for formatting and linting errors
+- `sbt dev` - allow compiler warnings to not fail the compilation
+
 ## What the microservice does
 
 Give urls, get page titles
@@ -51,9 +62,3 @@ curl -H 'Content-Type: application/json' \
   { "url": "https://ya.ru", "title": "Яндекс — быстрый поиск в интернете" }
 ]
 ```
-
-## How to use it
-
-1.  Install **[sbt](https://www.scala-sbt.org/)** (and **[Postman](https://www.getpostman.com/)** to compose requests manually)
-1.  In project directory execute `sbt run`
-1.  Send a **POST** request to `http://localhost:8080/`
