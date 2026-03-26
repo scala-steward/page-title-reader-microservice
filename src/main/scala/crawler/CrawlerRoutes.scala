@@ -3,14 +3,14 @@ package crawler
 import scala.concurrent.Future
 import scala.concurrent.duration._
 
-import akka.actor.ActorRef
-import akka.actor.ActorSystem
-import akka.event.Logging
-import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-import akka.http.scaladsl.server.Directives
-import akka.http.scaladsl.server.Route
-import akka.pattern.ask
-import akka.util.Timeout
+import org.apache.pekko.actor.ActorRef
+import org.apache.pekko.actor.ActorSystem
+import org.apache.pekko.event.Logging
+import org.apache.pekko.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
+import org.apache.pekko.http.scaladsl.server.Directives
+import org.apache.pekko.http.scaladsl.server.Route
+import org.apache.pekko.pattern.ask
+import org.apache.pekko.util.Timeout
 import spray.json.DefaultJsonProtocol
 
 import crawler.CrawlerActor._

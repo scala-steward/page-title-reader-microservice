@@ -3,10 +3,10 @@ package crawler
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-import akka.actor.ActorRef
-import akka.actor.ActorSystem
-import akka.http.scaladsl.Http
-import akka.http.scaladsl.server.Route
+import org.apache.pekko.actor.ActorRef
+import org.apache.pekko.actor.ActorSystem
+import org.apache.pekko.http.scaladsl.Http
+import org.apache.pekko.http.scaladsl.server.Route
 
 object CrawlerServer extends App with CrawlerRoutes {
   implicit val system: ActorSystem = ActorSystem("crawlerServer")

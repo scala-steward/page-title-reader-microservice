@@ -1,16 +1,15 @@
 lazy val root = (project in file(".")).settings(
   inThisBuild(
     List(
-      scalaVersion := "2.13.15"
+      scalaVersion := "2.13.17"
     )
   ),
   run / fork := true, // Makes exit codes work as expected
-  resolvers += "Akka library repository".at("https://repo.akka.io/maven"),
-  name := "page-title-reader-microservice",
+  name       := "page-title-reader-microservice",
   libraryDependencies ++= Seq(
-    "com.typesafe.akka" %% "akka-http"            % Versions.akkaHttp,
-    "com.typesafe.akka" %% "akka-http-spray-json" % Versions.akkaHttp,
-    "com.typesafe.akka" %% "akka-stream"          % Versions.akka
+    "org.apache.pekko" %% "pekko-http"            % Versions.pekkoHttp,
+    "org.apache.pekko" %% "pekko-http-spray-json" % Versions.pekkoHttp,
+    "org.apache.pekko" %% "pekko-stream"          % Versions.pekko
   ),
   // Scalafix
   semanticdbEnabled := true,
